@@ -23,7 +23,7 @@ function getDate() {
 }
 
 function getLocation() {
-  $.get("http://ipinfo.io", function(response) {
+  $.get("https://ipinfo.io", function(response) {
   var city = response.city;
   var country = response.country;
   $('#location').html(city+', '+country);
@@ -31,7 +31,7 @@ function getLocation() {
 }
 
 function getWeather() {
-  $.getJSON("http://ipinfo.io", function(response) {
+  $.getJSON("https://ipinfo.io", function(response) {
     var x = response.loc;
     var lat = x.split(",")[0];
     var lon = x.split(",")[1];
@@ -90,7 +90,7 @@ $(document).ready(function() {
   getLocation();
   getDate();
   getWeather();
-  
+
   $('#degrees').on('click', function () {
     if (units == 'c') {
       $('#degrees').html('°F');
@@ -101,10 +101,10 @@ $(document).ready(function() {
     }
     getWeather();
   })
-  
+
   $('#me').on('click', function() {
     window.open('https://github.com/Caleb-Ellis','github');
   })
-  
-  
+
+
 });
