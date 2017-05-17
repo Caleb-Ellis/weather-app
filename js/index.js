@@ -8,7 +8,7 @@ function getDate() {
   var day = days[date.getDay()];
   var smallDays = [];
   for (i=0;i<5;i++) {
-    smallDays[i] = daysSmall[date.getDay()+i];
+    smallDays[i] = daysSmall[(date.getDay()+i) % 7];
   }
   var dd = date.getDate();
   var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
