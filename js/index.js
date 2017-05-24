@@ -8,7 +8,7 @@ function getDate() {
   var day = days[date.getDay()];
   var smallDays = [];
   for (i=0;i<5;i++) {
-    smallDays[i] = daysSmall[date.getDay()+i];
+    smallDays[i] = daysSmall[(date.getDay()+i) % 7];
   }
   var dd = date.getDate();
   var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -23,7 +23,7 @@ function getDate() {
 }
 
 function getLocation() {
-  $.get("http://ipinfo.io", function(response) {
+  $.get("https://ipinfo.io", function(response) {
   var city = response.city;
   var country = response.country;
   $('#location').html(city+', '+country);
@@ -31,11 +31,11 @@ function getLocation() {
 }
 
 function getWeather() {
-  $.getJSON("http://ipinfo.io", function(response) {
+  $.getJSON("https://ipinfo.io", function(response) {
     var x = response.loc;
     var lat = x.split(",")[0];
     var lon = x.split(",")[1];
-    $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&APPID="+APPKEY,function(data){
+    $.getJSON("https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&APPID="+APPKEY,function(data){
       if (units == 'c') {
         $('#temp').html(Math.round(data.main.temp-273)+"°");
       } else if (units =='f') {
@@ -64,7 +64,7 @@ function getWeather() {
         document.getElementById("screen").className = "screen cloudy";
       }
     });
-    $.getJSON("http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&APPID="+APPKEY,function(data){
+    $.getJSON("https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&APPID="+APPKEY,function(data){
       var status = [];
       for (i=0;i<5;i++) {
         status[i]=data.list[i].weather[0].main;
@@ -90,7 +90,7 @@ $(document).ready(function() {
   getLocation();
   getDate();
   getWeather();
-  
+
   $('#degrees').on('click', function () {
     if (units == 'c') {
       $('#degrees').html('°F');
@@ -101,10 +101,10 @@ $(document).ready(function() {
     }
     getWeather();
   })
-  
+
   $('#me').on('click', function() {
     window.open('https://github.com/Caleb-Ellis','github');
   })
-  
-  
+
+
 });
