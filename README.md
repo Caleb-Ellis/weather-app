@@ -1,5 +1,7 @@
 # Weather App
 
+![alt text](https://caleb-ellis.github.io/images/weather.png)
+
 A minimalist weather app that utilises the Open Weather API to draw forecasts. Features a Celsius to Fahrenheit converter and a 5-day forecast.
 
 >**User Story:** I can see the weather in my current location.<br>
