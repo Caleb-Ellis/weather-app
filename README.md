@@ -1,6 +1,6 @@
 # Weather App
 
-![alt text](https://caleb-ellis.github.io/images/weather.png)
+![alt text](https://caleb-ellis.github.io/assets/img/weather.jpg)
 
 A minimalist weather app that utilises the Open Weather API to draw forecasts. Features a Celsius to Fahrenheit converter and a 5-day forecast.
 
